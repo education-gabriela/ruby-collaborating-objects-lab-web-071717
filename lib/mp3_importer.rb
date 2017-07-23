@@ -5,14 +5,12 @@ class MP3Importer
   def initialize(path)
     @path = path
     @files = Dir.glob(self.path + "/*.mp3").collect  {|file| self.normalize_filename(file)}
-    # binding.pry
   end
 
   def import
     self.files.each do |file|
       Song.new_by_filename(file)
     end
-    # binding.pry
   end
 
   def normalize_filename(filename)
